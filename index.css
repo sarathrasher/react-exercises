@@ -23,3 +23,7 @@
   font-family: Bad Script;
   text-align: center;
 }
+
+.post-list {
+  list-style: none;
+}

@@ -29,10 +29,10 @@ let posts = [
 ]
 
 let postList = posts.map(post =>
-  h('ul', null, [
+  h('li', null, [
     h('h1', {className: 'post-title'}, post.title),
-    h('li', {className: 'post-author'}, `Posted by: User ${post.userId}`),
-    h('li', {className: 'post-body'}, post.body),
+    h('p', {className: 'post-author'}, `Posted by: User ${post.userId}`),
+    h('p', {className: 'post-body'}, post.body),
   ])
 );
 
