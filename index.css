@@ -1,0 +1,25 @@
+* html, body {
+  width: 100vw;
+  height: 100vh;
+  font-size: 15px;
+  box-sizing: border-box;
+  font-family: Open Sans;
+  margin: 0;
+  padding: 0;
+}
+
+.large-text {
+  font-size: 2em;
+}
+
+.header {
+  text-align: center;  
+  font-family: Bad Script;
+  font-size: 4em;
+  margin: 0;
+}
+
+.post-title {
+  font-family: Bad Script;
+  text-align: center;
+}
