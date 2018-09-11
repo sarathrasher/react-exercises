@@ -32,11 +32,39 @@ let posts = [
 
 //View is the component/how the data looks like on the screen
 
+let snakeify = (props) => {
+  let newPosts = posts.map(post =>
+    (post.title === props.title) ?
+      Object.assign({}, post, { title: post.title + 's' })
+    :
+      post 
+  );
+  posts = newPosts;
+}
+
+
+let removePost = (props) => {
+  return posts = posts.filter(post => post.id !== props.id)
+}
+
 let PostRow = (props) => 
   h('li', null, [
     h('h1', {className: 'post-title'}, props.post.title),
+    h('button', {
+      // className: 'button', 
+      onClick: () => {
+        // props.post.title = props.post.title + 's';
+        snakeify(props.post);
+        rerender()
+      }
+    }, 'Snake-ify'),
     h('p', {className: 'post-author'}, `Posted by: User ${props.post.userId}`),
     h('p', {className: 'post-body'}, props.post.body),
+    h('button', {onClick: () => {
+      removePost(props.post);
+      rerender();
+      }
+    }, 'Delete'),
   ])
 
 let PostList = (props) =>
@@ -51,6 +79,14 @@ let HomePage = () => {
     ]
   );
 }
- 
 
-ReactDOM.render(h(HomePage, null), document.querySelector('.react-root'));
+let rerender = () => {
+  ReactDOM.render(
+    h(HomePage, null), 
+    document.querySelector('.react-root')
+  );
+}
+
+rerender();
+
+//state: information needed to be able to load the page. Normally refers to data that changes. Page does not change, state changes which alters what renders to the page. Anything that can't be changed is not state. What do I need to save to be able to recreate the page on refresh?
