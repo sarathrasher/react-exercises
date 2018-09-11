@@ -41,14 +41,16 @@ let PostRow = (props) =>
 
 let PostList = (props) =>
   props.posts.map(post =>
-    h('ul', {className: 'post-list'}, h(postRow, { post })),
+    h('ul', {className: 'post-list'}, h(PostRow, { post })),
 );
 
-let page =
-  h('div', null, [
+let HomePage = () => {
+  return  h('div', null, [
     h('h1', {className: 'header'}, ['Sleeping Belle']),
-    h(postList, { posts })
+    h(PostList, { posts })
     ]
   );
+}
+ 
 
-ReactDOM.render(page, document.querySelector('.react-root'));
+ReactDOM.render(h(HomePage, null), document.querySelector('.react-root'));
