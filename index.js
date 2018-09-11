@@ -1,6 +1,8 @@
 let h = React.createElement;
 // h(tag, {props}, [children]);
 
+
+//Model is information
 let posts = [
   {
     "userId": 1,
@@ -28,18 +30,25 @@ let posts = [
   },
 ]
 
-let postList = posts.map(post =>
+//View is the component/how the data looks like on the screen
+
+let PostRow = (props) => 
   h('li', null, [
-    h('h1', {className: 'post-title'}, post.title),
-    h('p', {className: 'post-author'}, `Posted by: User ${post.userId}`),
-    h('p', {className: 'post-body'}, post.body),
+    h('h1', {className: 'post-title'}, props.post.title),
+    h('p', {className: 'post-author'}, `Posted by: User ${props.post.userId}`),
+    h('p', {className: 'post-body'}, props.post.body),
   ])
+
+let PostList = (props) =>
+  props.posts.map(post =>
+    h('ul', {className: 'post-list'}, h(postRow, { post })),
 );
 
-let page = h('div', null, [
-  h('h1', {className: 'header'}, ['Sleeping Belle']),
-  h('ul', {className: 'post-list'}, postList),
-  ]
-);
+let page =
+  h('div', null, [
+    h('h1', {className: 'header'}, ['Sleeping Belle']),
+    h(postList, { posts })
+    ]
+  );
 
 ReactDOM.render(page, document.querySelector('.react-root'));
